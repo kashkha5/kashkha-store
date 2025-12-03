@@ -2,55 +2,123 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>سلة المشتريات | كشخة</title>
+<title>السلة | كشخة</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  body{background:#e6f4e6;font-family:Tahoma;margin:0;padding:20px;}
+  .topbar{display:flex;justify-content:space-between;margin-bottom:20px;gap:10px;}
+  .topbar button,.topbar a{
+    flex:1;text-align:center;background:#2a5d2a;color:#fff;padding:10px;
+    border-radius:8px;text-decoration:none;font-size:18px;border:none;cursor:pointer;
+  }
+  .topbar a:last-child{background:#1f451f;}
+  .cart-wrap{max-width:900px;margin:auto;}
+  .cart-item{
+    display:flex;gap:15px;align-items:center;background:#fff;padding:12px;
+    border-radius:10px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  .cart-item img{width:90px;height:110px;object-fit:cover;border-radius:8px;background:#eee;}
+  .cart-item h3{margin:0 0 6px 0;}
+  .cart-item .meta{color:#444;font-size:15px;line-height:1.6;}
+  .remove-btn{
+    margin-right:auto;background:#b00020;color:#fff;border:none;
+    padding:8px 10px;border-radius:6px;cursor:pointer;
+  }
+  .total{
+    background:#1f451f;color:#fff;padding:12px;border-radius:8px;
+    font-size:18px;font-weight:bold;margin-top:15px;text-align:center;
+  }
+  .whats-btn{
+    margin-top:12px;background:#25D366;color:#fff;border:none;width:100%;
+    padding:12px;border-radius:8px;font-size:18px;cursor:pointer;
+  }
+</style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">كشخة</div>
-  <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="products.html">المنتجات</a>
-    <a href="cart.html">السلة</a>
-      
-  </nav>
-</header>
-
-<div class="container">
-  <h1>سلة المشتريات</h1>
-  <div class="card">
-    <h3>قميص فاخر</h3>
-    <p>الكمية: 1</p>
-    <p>السعر: 199 ريال</p>
-    <a class="btn" href="checkout.html">متابعة الدفع</a>
-  </div>
+<div class="topbar">
+  <button onclick="history.back()">⬅ رجوع</button>
+  <a href="products.html">📂 الفئات</a>
+  <a href="cart.html">🛒 السلة</a>
 </div>
 
-
-<a href="https://wa.me/96872733350" target="_blank" 
-   style="position:fixed;bottom:25px;right:25px;background:#25D366;color:white;
-          padding:15px 18px;border-radius:50%;font-size:26px;text-decoration:none;
-          z-index:999;">
-    💬
-</a>
-
-
-<div style="text-align:center;padding:40px 0;color:#F2ECDC;">
-    <a href="https://www.instagram.com/kashkha_store5/" 
-       target="_blank" style="color:#F2ECDC;font-size:20px;text-decoration:none;">
-       
-    </a>
+<div class="cart-wrap">
+  <h2 style="text-align:center;margin:20px 0;">سلة المشتريات</h2>
+  <div id="cart"></div>
+  <div id="total" class="total" style="display:none;"></div>
+  <button id="whatsBtn" class="whats-btn" style="display:none;" onclick="sendWhatsApp()">
+    إرسال الطلب على الواتساب
+  </button>
 </div>
 
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-<div style="text-align:center;padding:40px 0;">
-    <a href="https://www.instagram.com/kashkha_store5/" target="_blank" style="text-decoration:none;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
-             alt="Instagram"
-             style="width:45px;filter:brightness(0) invert(1);">
-    </a>
-</div>
+function renderCart(){
+  cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const container = document.getElementById("cart");
+  const totalBox  = document.getElementById("total");
+  const whatsBtn  = document.getElementById("whatsBtn");
+  container.innerHTML = "";
+
+  if(cart.length === 0){
+    container.innerHTML = "<p style='text-align:center;'>السلة فارغة</p>";
+    totalBox.style.display="none";
+    whatsBtn.style.display="none";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((p,i)=>{
+    total += Number(p.price || 0);
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${p.img || ""}" alt="${p.name || "منتج"}">
+        <div>
+          <h3>${p.name || "منتج"}</h3>
+          <div class="meta">
+            اللون: ${p.color || "—"}<br>
+            المقاس: ${p.size || "—"}<br>
+            السعر: ${p.price || 0} ريال
+          </div>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${i})">حذف</button>
+      </div>
+    `;
+  });
+
+  totalBox.style.display="block";
+  totalBox.innerText = `الإجمالي: ${total} ريال`;
+  whatsBtn.style.display="block";
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function sendWhatsApp(){
+  const phone = "96872733350";
+  if(cart.length === 0){ alert("السلة فارغة"); return; }
+
+  let msg = "طلب جديد من متجر كشخة:%0A%0A";
+  let total = 0;
+
+  cart.forEach((p, idx)=>{
+    total += Number(p.price || 0);
+    msg += `${idx+1}) ${p.name || "منتج"} - لون: ${p.color || "—"} - مقاس: ${p.size || "—"} - سعر: ${p.price || 0} ريال%0A`;
+  });
+
+  msg += `%0Aالإجمالي: ${total} ريال`;
+  const url = `https://wa.me/${phone}?text=${msg}`;
+  window.open(url, "_blank");
+}
+
+renderCart();
+</script>
 
 </body>
 </html>

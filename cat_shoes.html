@@ -2,67 +2,135 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>الأحذية | كشخة</title>
-<link rel="stylesheet" href="style.css">
+<title>أحذية الكندورة - جميع المنتجات</title>
+<style>
+body {background:#e6f4e6;font-family:Tahoma;padding:20px;margin:0;}
+.header {
+    background:#2a5d2a;color:white;text-align:center;
+    padding:15px;font-size:28px;font-weight:bold;
+    border-radius:10px;margin-bottom:20px;
+}
+.grid {display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.card {
+    background:#fff;border-radius:12px;padding:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+    border:2px solid #2a5d2a;text-align:center;
+}
+.card img {
+    width:100%;height:260px;background:#cce0cc;
+    border-radius:10px;object-fit:cover;
+}
+h3 {margin:10px 0;color:#2a5d2a;}
+.price {color:#c1272d;font-weight:bold;margin-top:10px;font-size:18px;}
+.btn {
+    margin-top:10px;background:#2a5d2a;color:white;
+    padding:10px;width:100%;border:none;border-radius:6px;cursor:pointer;font-size:16px;
+}
+.btn:hover {background:#1f451f;}
+select{width:100%;padding:8px;margin-top:6px;border-radius:6px;}
+.topbar{display:flex;justify-content:space-between;margin-bottom:20px;gap:10px;}
+.topbar button,.topbar a{
+  flex:1;text-align:center;background:#2a5d2a;color:#fff;padding:10px;
+  border-radius:8px;text-decoration:none;font-size:18px;border:none;cursor:pointer;
+}
+.topbar a:last-child{background:#1f451f;}
+</style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">كشخة</div>
-  <nav></nav>
-</header>
+<div class="topbar">
+  <button onclick="history.back()">⬅ رجوع</button>
+  <a href="products.html">📂 الفئات</a>
+  <a href="cart.html">🛒 السلة</a>
+</div>
 
-<div class="container">
-  <h1 style="text-align:center;">الأحذية</h1>
+<div class="header">كشخة - أحذية الكندورة</div>
 
-  <div class="product-grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/300x400"/>
-      <h3>منتج 1</h3>
+<div class="grid">
 
-      <label>اللون:</label>
-      <select style="width:100%;padding:10px;margin:8px 0;">
-        <option>أسود</option>
-        <option>أبيض</option>
-        <option>أزرق</option>
-      </select>
+  <div class="card">
+    <img src="" alt="حذاء الكندورة 1">
+    <h3>حذاء الكندورة</h3>
+    <p>اللون: أسود</p>
+    <label>المقاس:</label>
+    <select>
+      <option>40</option><option>41</option><option>42</option>
+      <option>43</option><option>44</option><option>45</option>
+    </select>
+    <p class="price">7 ريال</p>
+    <button class="btn" onclick="addToCart(this)">إضافة إلى السلة</button>
+  </div>
 
-      <label>المقاس:</label>
-      <select style="width:100%;padding:10px;margin:8px 0;">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-      </select>
+  <div class="card">
+    <img src="" alt="حذاء الكندورة 2">
+    <h3>حذاء الكندورة</h3>
+    <p>اللون: أبيض</p>
+    <label>المقاس:</label>
+    <select>
+      <option>40</option><option>41</option><option>42</option>
+      <option>43</option><option>44</option><option>45</option>
+    </select>
+    <p class="price">7 ريال</p>
+    <button class="btn" onclick="addToCart(this)">إضافة إلى السلة</button>
+  </div>
 
-      <a class="btn" href="checkout.html">إضافة إلى السلة</a>
-    </div>
+  <div class="card">
+    <img src="" alt="حذاء الكندورة 3">
+    <h3>حذاء الكندورة</h3>
+    <p>اللون: بني</p>
+    <label>المقاس:</label>
+    <select>
+      <option>40</option><option>41</option><option>42</option>
+      <option>43</option><option>44</option><option>45</option>
+    </select>
+    <p class="price">7 ريال</p>
+    <button class="btn" onclick="addToCart(this)">إضافة إلى السلة</button>
+  </div>
+
+  <div class="card">
+    <img src="" alt="حذاء الكندورة 4">
+    <h3>حذاء الكندورة</h3>
+    <p>اللون: كحلي</p>
+    <label>المقاس:</label>
+    <select>
+      <option>40</option><option>41</option><option>42</option>
+      <option>43</option><option>44</option><option>45</option>
+    </select>
+    <p class="price">7 ريال</p>
+    <button class="btn" onclick="addToCart(this)">إضافة إلى السلة</button>
+  </div>
+
+  <div class="card">
+    <img src="" alt="حذاء الكندورة 5">
+    <h3>حذاء الكندورة</h3>
+    <p>اللون: رمادي</p>
+    <label>المقاس:</label>
+    <select>
+      <option>40</option><option>41</option><option>42</option>
+      <option>43</option><option>44</option><option>45</option>
+    </select>
+    <p class="price">7 ريال</p>
+    <button class="btn" onclick="addToCart(this)">إضافة إلى السلة</button>
   </div>
 
 </div>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/96872733350" target="_blank" 
-   style="position:fixed;bottom:25px;right:25px;background:#25D366;color:white;
-          padding:15px 18px;border-radius:50%;font-size:26px;text-decoration:none;
-          z-index:999;">💬</a>
+<script>
+function addToCart(button) {
+  const card = button.closest(".card");
+  const name  = "حذاء الكندورة";
+  const color = card.querySelector("p").innerText.replace("اللون: ","").trim();
+  const size  = card.querySelector("select").value;
+  const price = 7;
+  const img   = card.querySelector("img").getAttribute("src") || "";
+  const product = { name, color, size, price, img };
 
-
-<div style="text-align:center;padding:40px 0;color:#F2ECDC;">
-    <a href="https://www.instagram.com/kashkha_store5/" 
-       target="_blank" style="color:#F2ECDC;font-size:20px;text-decoration:none;">
-       
-    </a>
-</div>
-
-
-<div style="text-align:center;padding:40px 0;">
-    <a href="https://www.instagram.com/kashkha_store5/" target="_blank" style="text-decoration:none;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
-             alt="Instagram"
-             style="width:45px;filter:brightness(0) invert(1);">
-    </a>
-</div>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("تمت الإضافة إلى السلة ✔️");
+}
+</script>
 
 </body>
 </html>

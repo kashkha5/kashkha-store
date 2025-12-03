@@ -2,59 +2,76 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>جميع المنتجات | كشخة</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>الفئات | كشخة</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  body{background:#e6f4e6;font-family:Tahoma;margin:0;}
+  .header{
+    background:#2a5d2a;color:white;padding:15px 20px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .header .logo{font-size:22px;font-weight:bold;}
+  .header nav a{color:white;text-decoration:none;margin:0 8px;font-size:18px;}
+  .container{padding:20px;}
+  h1{text-align:center;margin:20px 0;}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;border:2px solid #2a5d2a;border-radius:12px;
+    padding:15px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);
+  }
+  .card img{
+    width:100%;height:220px;object-fit:cover;border-radius:10px;background:#e3f2e3;
+  }
+  .card h3{margin:12px 0 6px;font-size:20px;color:#1f451f;}
+  .card p{margin:0 0 10px;color:#444;}
+  .btn{
+    display:block;background:#1f451f;color:#fff;text-decoration:none;
+    padding:10px;border-radius:8px;font-size:18px;
+  }
+</style>
 </head>
 <body>
+
 <header class="header">
   <div class="logo">كشخة</div>
   <nav>
     <a href="index.html">الرئيسية</a>
-    <a href="products.html">المنتجات</a>
+    <a href="products.html">الفئات</a>
     <a href="cart.html">السلة</a>
-      
   </nav>
 </header>
 
 <div class="container">
-  <h1>جميع المنتجات</h1>
-  <div class="product-grid">
+  <h1>الفئات</h1>
+
+  <div class="grid">
+
     <div class="card">
-      <img src="https://via.placeholder.com/300x400" />
-      <h3>قميص فاخر</h3>
-      <a class="btn" href="product.html">عرض المنتج</a>
+      <img src="https://via.placeholder.com/400x300" alt="السديريات">
+      <h3>السديريات</h3>
+      <p>جميع ألوان السديري</p>
+      <a class="btn" href="cat_clothes.html">دخول الفئة</a>
     </div>
+
     <div class="card">
-      <img src="https://via.placeholder.com/300x400" />
-      <h3>بنطال كلاسيكي</h3>
-      <a class="btn" href="product.html">عرض المنتج</a>
+      <img src="https://via.placeholder.com/400x300" alt="أحذية الكندورة">
+      <h3>أحذية الكندورة</h3>
+      <p>5 بطاقات جاهزة</p>
+      <a class="btn" href="cat_shoes.html">دخول الفئة</a>
     </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="العطور">
+      <h3>العطور</h3>
+      <p>قسم جديد قريباً</p>
+      <a class="btn" href="cat_perfume.html">دخول الفئة</a>
+    </div>
+
   </div>
-</div>
-
-
-<a href="https://wa.me/96872733350" target="_blank" 
-   style="position:fixed;bottom:25px;right:25px;background:#25D366;color:white;
-          padding:15px 18px;border-radius:50%;font-size:26px;text-decoration:none;
-          z-index:999;">
-    💬
-</a>
-
-
-<div style="text-align:center;padding:40px 0;color:#F2ECDC;">
-    <a href="https://www.instagram.com/kashkha_store5/" 
-       target="_blank" style="color:#F2ECDC;font-size:20px;text-decoration:none;">
-       
-    </a>
-</div>
-
-
-<div style="text-align:center;padding:40px 0;">
-    <a href="https://www.instagram.com/kashkha_store5/" target="_blank" style="text-decoration:none;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
-             alt="Instagram"
-             style="width:45px;filter:brightness(0) invert(1);">
-    </a>
 </div>
 
 </body>
